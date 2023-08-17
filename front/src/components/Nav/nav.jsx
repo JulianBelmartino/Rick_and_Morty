@@ -6,9 +6,14 @@ export default function Nav(props) {
   let onSearch = props.onSearch
    return (
       <div className={styles.bar}>
-         <Link to="/about">ABOUT</Link>
-         <Link to="/home" >HOME</Link>
+        <img className={styles.logo} src="./logo.png" />
+         <div className={styles.linkBar}>
+         <Link className={styles.linkNav} to="/about">ABOUT</Link>
+         <Link className={styles.linkNav} to="/home" >HOME</Link>
+         </div>
+         <div  className={styles.search} >
           <SearchBar onSearch={onSearch} />
+          </div>
       </div>
    );
 }

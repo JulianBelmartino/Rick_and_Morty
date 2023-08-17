@@ -1,0 +1,43 @@
+.forma{
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+    margin-top: 20px;
+    background-color: rgb(0,0,0,0.45);
+    backdrop-filter: blur(5px);
+    width: 400px;
+    height:350px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.inputs{
+    display:flex;
+    width: 70%;
+    margin: 5px auto;
+    background-color: black;
+    color: white
+}
+.inputs:focus{
+    box-shadow: 0 0 50px 15px #48e0ad;
+    transition: 0.3s ease-in-out;
+}
+.label{
+    color:white;
+    font-weight: 500;
+
+}
+.button{
+    background-color: black;
+    color :white;
+    width: 120px;
+    margin: 0px auto;
+    margin-top: 20px;
+    padding:5px;
+}
+.container{
+    padding: 50px;
+}
+.image{
+    width: 200px;
+    height:100px;
+}

@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import styles from './Form.module.css'
 
 const validation = (userData,setErrors,errors) =>{
 if(!userData.email) setErrors({...errors, email:"email vacio"})
@@ -12,7 +12,7 @@ if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/.test(userData.email.value)){
 }
 }
 
-export default function Form(){
+export default function Form({login}){
 const [errors, setErrors] = useState({
     
     email: '',
@@ -30,21 +30,29 @@ const handleChange = (event) => {
     const value = event.target.value;
     setData({...userData, [property]: value})
     validation(userData,setErrors, errors)
+
 }
-   
+const submitHandler = (event) => {
+    event.preventDefault()
+    login(userData)
+}
+
     return(
-        <form>
-            
+        <form  className={styles.forma} onSubmit={submitHandler}>
+            <div className={styles.container}>
+            <img className={styles.image} src="./logo.png" />
             <div>
-                <label htmlFor="email">Email: </label>
-                <input type="text" name="email" onChange={handleChange} value={userData.email}/>
+                <label className={styles.label} htmlFor="email">Email: </label>
+                <input className={styles.inputs} type="text" name="email" onChange={handleChange} value={userData.email}/>
             </div>
 
             <div>
-                <label htmlFor="password">Password: </label>
-                <input type="text" name="password" onChange={handleChange} value={userData.password} />
+                <label className={styles.label} htmlFor="password">Password: </label>
+                <input className={styles.inputs} type="text" name="password" onChange={handleChange} value={userData.password} />
             </div>
-            <button type="submit" value="Submit">SUBMIT</button>
+            
+            <button className={styles.button} type="submit" value="Submit">LOGIN</button>
+            </div>
         </form>
     )
     }
