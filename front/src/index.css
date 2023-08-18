@@ -5,8 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image:url('./imgs/831749.webp');
-  background-size:cover;
+  background-color:rgb(14, 25, 71);
   border:none;
   margin: 0px;
   padding:0px;

@@ -4,6 +4,7 @@ import Cards from './components/Cards/Cards.jsx';
 import Form from './components/Form/Form.jsx'
 import About from './components/About/About.jsx'
 import Detail from './components/Detail/Detail.jsx'
+import Favorites from './components/Favorites/Favorites';
 import { useEffect, useState} from 'react';
 import axios from 'axios';
 import {Routes, Route, useLocation} from 'react-router-dom';
@@ -54,6 +55,7 @@ const {pathname} = useLocation()
             <Route path='/' element={<Form login={login}/>} />
             <Route path='/home' element={ <Cards characters={characters} onClose={onClose}/> } />
             <Route path='/about' element={<About />} />
+            <Route path='/favorites' element={<Favorites />} />
             <Route path='/detail/:detailid' element={<Detail />} />
         </Routes>
 

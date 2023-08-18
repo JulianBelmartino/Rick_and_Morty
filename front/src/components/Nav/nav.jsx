@@ -10,6 +10,7 @@ export default function Nav(props) {
          <div className={styles.linkBar}>
          <Link className={styles.linkNav} to="/about">ABOUT</Link>
          <Link className={styles.linkNav} to="/home" >HOME</Link>
+         <Link className={styles.linkNav} to="/favorites" >FAVORITES</Link>
          </div>
          <div  className={styles.search} >
           <SearchBar onSearch={onSearch} />
