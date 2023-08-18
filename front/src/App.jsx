@@ -32,10 +32,10 @@ function App() {
 
    function onSearch(id) {
       axios(`https://rickandmortyapi.com/api/character/${id}?key={henrym-julianbelmartino}`).then(({ data }) => {
-         if (data.name) {
+         if (data.name && !characters.find(char => char.id === data.id)) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
-            window.alert('¡No hay personajes con este ID!');
+            window.alert('¡Ya agregaste ese personaje!');
          }
       });
    }
