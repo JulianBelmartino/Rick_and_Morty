@@ -44,3 +44,7 @@ background-color: rgb(4, 235, 146);
 transition: 0.5s ease-in-out;
 padding:auto;
 }
+.favbutton{
+    color:red;
+    display:block
+}

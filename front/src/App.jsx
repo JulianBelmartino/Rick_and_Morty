@@ -19,26 +19,38 @@ function App() {
    useEffect(() => {
       !access && navigate('/')
    },[access])
-   const email = 'ejemplo@gmail.com';
-   const password = 'una';
    
-   const login = (userData) => {
-      if(userData.email === email && userData.password === password){
-         setAccess(true)
-         navigate('/home')
-      }else{
-         alert('nop')
+   async function login(userData) {
+      try {
+         const { email, password } = userData;
+         const URL = `http://localhost:3001/rickandmorty/login/?email=${email}&password=${password}`;
+         
+         const response = await axios.get(URL);
+         const { access } = response.data;
+         
+         setAccess(response.data);
+         
+         if (access) {
+            navigate('/home'); 
+         }
+      } catch (error) {
+         console.error('Error during login:', error);
       }
    }
 
-   function onSearch(id) {
-      axios(`https://rickandmortyapi.com/api/character/${id}?key={henrym-julianbelmartino}`).then(({ data }) => {
+   async function onSearch(id) {
+      try {
+         const response = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+         const data = response.data;
+   
          if (data.name && !characters.find(char => char.id === data.id)) {
             setCharacters((oldChars) => [...oldChars, data]);
          } else {
             window.alert('¡Ya agregaste ese personaje!');
          }
-      });
+      } catch (error) {
+         console.error('Error fetching character data:', error);
+      }
    }
 
    function onClose(id) {

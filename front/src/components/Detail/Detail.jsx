@@ -1,7 +1,7 @@
-import axios from 'axios'
+import styles from './detail.module.css'
+
 import { useParams} from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import styles from './detail.module.css'
 
 
 export default function Detail(){
@@ -10,10 +10,16 @@ export default function Detail(){
 
 
     useEffect(() => {
-        axios(`https://rickandmortyapi.com/api/character/${detailid}?key={henrym-julianbelmartino}`).then(( response ) => {
-         setCharacter(response.data);
+      fetch(`https://rickandmortyapi.com/api/character/${detailid}`)
+        .then(response => response.json())
+        .then(data => {
+          setCharacter(data);
+        })
+        .catch(error => {
+          console.error("Error fetching data:", error);
         });
-     }, []);
+        
+  }, [detailid]);
 
      return(
       <div className={styles.container}>
