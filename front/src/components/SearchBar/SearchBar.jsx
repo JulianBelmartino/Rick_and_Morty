@@ -1,10 +1,13 @@
 import { useState } from "react";
 import styles from './SearchBar.module.css'
 
+
+
 export default function SearchBar(props) {
    const [id, setId] = useState('')
    const handleChange = (event) => {
-      setId(event.target.value)
+        setId(event.target.value)
+     
    }
    
    return (

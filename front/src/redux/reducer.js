@@ -11,18 +11,19 @@ const rootReducer = (state = initialState,action) => {
   
          case REMOVE_FAVORITE:
          return { ...state, myFavorites: action.payload };
-
-        case FILTER:
-            let filteredChars = state.allCharacters.filter(char => char.gender === action.payload)
-            if(action.payload === 'all'){
-                return filteredChars = state.allCharacters
-            }else{
-
-                return {...state, myFavorites: filteredChars}
+        
+         case FILTER:
+            
+            let filteredCharacters = [...state.myFavorites]
+            if (action.payload === 'all') {
+                return { ...state, myFavorites: filteredCharacters };
+            } else if ( action.payload === 'Female' || action.payload === 'Male' || action.payload === 'Genderless' ||  action.payload === 'unknown'){
+                 let result = filteredCharacters.filter(char => char.gender === action.payload);
+                return { ...state,myFavorite: filteredCharacters, filteredResult: result  };
             }
 
         case ORDER:
-            const orderedCharacters = [...state.allCharacters];
+            const orderedCharacters = [...state.myFavorites];
             if (action.payload === "A") {
               orderedCharacters.sort((a, b) => a.id - b.id); 
             } else if (action.payload === "D") {

@@ -2,9 +2,14 @@ const express = require('express')
 const morgan = require('morgan')
 const router = require('./routes/index.js')
 const cors = require('cors')
+const { conn } = require('./DB_connection');
+
 
 const server = express()
 const PORT = 3001
+
+//const KEY = '?henrym-{JulianBelmartino}'
+//const URL = 'https://rickandmortyapi.com/api/'
 
 server.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -24,10 +29,12 @@ server.use((req, res, next) => {
         server.use(morgan('dev'))
         server.use(cors())
         server.use(express.json());
-    
-    server.use('/rickandmorty', router);
-    
+        
+        server.use('/rickandmorty', router);
+        
+        
+        conn.sync({force: true})
 
-server.listen(PORT, () => {
-    console.log('Hello ' +PORT)
-})
+        server.listen(PORT, () => {
+            console.log('Hello ' +PORT)
+        })
